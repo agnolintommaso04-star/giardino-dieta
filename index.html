@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Il Giardino della Dieta</title>
+  <meta name="description" content="Il mio piano alimentare vegetariano, calendario dei pasti, ricette e diario." />
+  <meta name="theme-color" content="#f4efe4" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Giardino" />
+  <link rel="icon" href="assets/icon.jpg" />
+  <link rel="apple-touch-icon" href="assets/icon.jpg" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ============ LOGIN ============ -->
+  <section id="auth" class="auth hidden">
+    <div class="auth-card">
+      <img src="assets/icon.jpg" alt="" class="auth-icon" />
+      <h1>Il Giardino della Dieta</h1>
+      <p class="muted">Mangiare bene, con calma, ogni giorno.</p>
+
+      <div id="auth-cloud">
+        <form id="auth-form" autocomplete="on">
+          <label>Email
+            <input type="email" name="email" required autocomplete="email" placeholder="tu@email.it" />
+          </label>
+          <label>Password
+            <input type="password" name="password" required minlength="6" autocomplete="current-password" placeholder="Almeno 6 caratteri" />
+          </label>
+          <button type="submit" class="btn primary block">Entra</button>
+          <button type="button" class="btn block" id="btn-signup">Crea un account</button>
+          <button type="button" class="link" id="btn-reset">Password dimenticata?</button>
+        </form>
+        <p id="auth-msg" class="auth-msg"></p>
+      </div>
+
+      <div id="auth-not-configured" class="notice hidden">
+        <strong>Supabase non è ancora configurato.</strong><br />
+        Puoi usare l'app salvando i dati solo su questo dispositivo, oppure seguire la
+        <em>GUIDA.md</em> per attivare account e sincronizzazione.
+      </div>
+
+      <button type="button" class="btn ghost block" id="btn-local">Continua senza account</button>
+    </div>
+  </section>
+
+  <!-- ============ APP ============ -->
+  <div id="app" class="hidden">
+    <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="eyebrow" id="hero-date"></p>
+        <h1>Il Giardino della Dieta</h1>
+        <p id="greeting" class="greeting"></p>
+      </div>
+    </header>
+
+    <nav class="tabs" id="tabs" aria-label="Sezioni"></nav>
+
+    <main id="view" class="view"></main>
+
+    <footer class="foot">
+      <span id="sync-status"></span>
+      <span class="muted small">Indicazioni orientative: non sostituiscono il parere di un medico o di un dietista.</span>
+    </footer>
+  </div>
+
+  <button id="fab" class="fab hidden" aria-label="Aggiungi pasto"></button>
+
+  <!-- Modale e notifiche -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card">
+      <div class="sheet-handle" data-close></div>
+      <button class="modal-x" data-close aria-label="Chiudi"></button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+
+  <div id="loading" class="loading">
+    <div class="loader"></div>
+    <p>Un attimo…</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
